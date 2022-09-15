@@ -66,8 +66,6 @@ def toDecimal(nums):
     for i in range(len(nums)):
         if nums[i] == 1:
             finDec += 2**i
-        else:
-            continue
 
     return finDec
 
@@ -85,16 +83,18 @@ numB = int(input("Pon otro decimal que te gustaría sumar: "))
 sumDec = numA + numB
 overflow = False
 
-print("------------------------------------------------------")
 binaryA = toBinary(numA)
 binaryB = toBinary(numB)
-print("El primer número es: " + str(binaryA))
-print("El segundo número es: " + str(binaryB))
+binarySum = binaryAddition(binaryA, binaryB)
+binaryNumberwError = hasOverflow(overflow, binarySum)
+
+print("------------------------------------------------------")
+print("El primer número es: " + str(reverse(binaryA)))
+print("El segundo número es: " + str(reverse(binaryB)))
 print("-------------------------------------------------------")
 print("La suma decimal de los números es: " + str(sumDec))
-binarySum = binaryAddition(binaryA, binaryB)
-print("La suma binaria es: " + str(binarySum))
+print("La suma binaria es: " + str(reverse(binarySum)))
 print("-----------------------------------------------------")
-binaryNumberwError = hasOverflow(overflow, binarySum)
-print("El overflow y el numero binario: " + str(hasOverflow(overflow, binarySum)))
+reverse(binaryNumberwError)
 print("El numero final en decimal es: " + str(toDecimal(binaryNumberwError)))
+print("El overflow y el numero binario: " + str(reverse(hasOverflow(overflow, binaryNumberwError))))
