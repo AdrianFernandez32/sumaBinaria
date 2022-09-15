@@ -1,9 +1,7 @@
 import collections
-
-#numA = int(input("Pon un decimal que quieras sumar: "))
-#numB = int(input("Pon otro decimal que te gustaría sumar: "))
-# sumDec = numA + numB
-overflow = False
+##############################################################################################
+# Whole functions, just that
+##############################################################################################
 
 def toBinary(num):
     q = collections.deque()
@@ -57,6 +55,46 @@ def binaryAddition(arr1, arr2):
                 newNumber.append(1)
                 carry = 0
     if carry == 1:
+        overflow = True
+    else:
         overflow = False
+    
+    return newNumber
 
-print(toBinary(123))
+def toDecimal(nums):
+    finDec = 0
+    for i in range(len(nums)):
+        if nums[i] == 1:
+            finDec += 2**i
+        else:
+            continue
+
+    return finDec
+
+def hasOverflow(overflow, finalNumbers):
+    if overflow == True:
+        finalNumbers.pop()
+    print("Overflow: " + str(overflow))
+    
+    return finalNumbers
+
+# Path step-by-step
+
+numA = int(input("Pon un decimal que quieras sumar: "))
+numB = int(input("Pon otro decimal que te gustaría sumar: "))
+sumDec = numA + numB
+overflow = False
+
+print("------------------------------------------------------")
+binaryA = toBinary(numA)
+binaryB = toBinary(numB)
+print("El primer número es: " + str(binaryA))
+print("El segundo número es: " + str(binaryB))
+print("-------------------------------------------------------")
+print("La suma decimal de los números es: " + str(sumDec))
+binarySum = binaryAddition(binaryA, binaryB)
+print("La suma binaria es: " + str(binarySum))
+print("-----------------------------------------------------")
+binaryNumberwError = hasOverflow(overflow, binarySum)
+print("El overflow y el numero binario: " + str(hasOverflow(overflow, binarySum)))
+print("El numero final en decimal es: " + str(toDecimal(binaryNumberwError)))
