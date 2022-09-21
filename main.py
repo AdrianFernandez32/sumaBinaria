@@ -2,6 +2,7 @@ import collections
 ##############################################################################################
 # Whole functions, just that
 ##############################################################################################
+overflow = False
 
 def toBinary(num):
     q = collections.deque()
@@ -81,7 +82,6 @@ def hasOverflow(overflow, finalNumbers):
 numA = int(input("Pon un decimal que quieras sumar: "))
 numB = int(input("Pon otro decimal que te gustaría sumar: "))
 sumDec = numA + numB
-overflow = False
 
 binaryA = toBinary(numA)
 binaryB = toBinary(numB)
