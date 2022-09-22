@@ -56,9 +56,7 @@ def binaryAddition(arr1, arr2):
                 newNumber.append(1)
                 carry = 0
     if carry == 1:
-        overflow = True
-    else:
-        overflow = False
+        newNumber.append(1)
     
     return newNumber
 
@@ -70,11 +68,12 @@ def toDecimal(nums):
 
     return finDec
 
-def hasOverflow(overflow, finalNumbers):
-    if overflow == True:
+def hasOverflow(finalNumbers):
+    overflow = False
+    if len(finalNumbers) > 16:
         finalNumbers.pop()
+        overflow = True
     print("Overflow: " + str(overflow))
-    
     return finalNumbers
 
 # Path step-by-step
@@ -86,15 +85,15 @@ sumDec = numA + numB
 binaryA = toBinary(numA)
 binaryB = toBinary(numB)
 binarySum = binaryAddition(binaryA, binaryB)
-binaryNumberwError = hasOverflow(overflow, binarySum)
+print("------------------------------------------------------")
+binaryNumberwError = hasOverflow(binarySum)
 
 print("------------------------------------------------------")
 print("El primer número es: " + str(reverse(binaryA)))
 print("El segundo número es: " + str(reverse(binaryB)))
 print("-------------------------------------------------------")
-print("La suma decimal de los números es: " + str(sumDec))
-print("La suma binaria es: " + str(reverse(binarySum)))
+print("La suma decimal real de los números es: " + str(sumDec))
 print("-----------------------------------------------------")
+print("La suma binaria errónea es: " + str(reverse(binarySum)))
 reverse(binaryNumberwError)
-print("El numero final en decimal es: " + str(toDecimal(binaryNumberwError)))
-print("El overflow y el numero binario: " + str(reverse(hasOverflow(overflow, binaryNumberwError))))
+print("El numero final erróneo en decimal es: " + str(toDecimal(binaryNumberwError)))
