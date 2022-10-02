@@ -121,23 +121,32 @@ def detectOverflow(nums):
 def mayorMenor(arr1, arr2):
     arr = binarySubstration(arr1, arr2)
     if arr[0] == 1:
-        print(str(arr2) + "es mayor")
+        mayor = arr2
         return arr2
     else:
-        print(str(arr1) + "es menor")
-        return arr1
+        mayor = arr1
+        return mayor
 
 # Funcion para comparar si dos números son iguales
 # e.g.
 # 1001 == 1001 = True
 def isEqual(arr1, arr2):
-    for i in range(len(arr1)):
-        if arr1[i] != arr2[i]:
+    arr = binarySubstration(arr1, arr2)
+    for i in range(len(arr)):
+        if arr[i] != 0:
             return False
+    return True
+
+# Función para invertir el número dado
+# e.g.
+# 1001 -> 0110
+def complement1(nums):
+    i = 0
+    while i < len(nums):
+        if nums[i] == 1:
+            nums[i] = 0
         else:
-            return True
+            nums[i] = 1
+        i += 1
+    return nums
 
-num1 = [1,0,1,1,0,0,0,1,1]
-num2 = [1,0,1,0,1,0,0,1,0]
-
-print(binarySubstration(num1, num2))
