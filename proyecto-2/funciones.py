@@ -70,7 +70,6 @@ def binaryAddition(arr1, arr2):
         newNumber.append(1)
     
     reverse(newNumber)
-    
     return newNumber
 
 # Función para restar dos números binarios
@@ -109,7 +108,36 @@ def binarySubstration(arr1, arr2):
     reverse(newNumber)
     return newNumber
 
-num1 = [1,0,0,1,1,1,0,1,1]
-num2 = [0,1,1,1,0,0,1,0,1]
+# Función para detectar overflow (Si es mas largo que 16 bits, se detecta el overflow)
+def detectOverflow(nums):
+    if len(nums) > 16:
+        return True
+    else:
+        return False
+
+# Comparar si un número es más grande que otro e indicar cual es más grande
+# e.g.
+# 101100011 - 101010010 = 101100011
+def mayorMenor(arr1, arr2):
+    arr = binarySubstration(arr1, arr2)
+    if arr[0] == 1:
+        print(str(arr2) + "es mayor")
+        return arr2
+    else:
+        print(str(arr1) + "es menor")
+        return arr1
+
+# Funcion para comparar si dos números son iguales
+# e.g.
+# 1001 == 1001 = True
+def isEqual(arr1, arr2):
+    for i in range(len(arr1)):
+        if arr1[i] != arr2[i]:
+            return False
+        else:
+            return True
+
+num1 = [1,0,1,1,0,0,0,1,1]
+num2 = [1,0,1,0,1,0,0,1,0]
 
 print(binarySubstration(num1, num2))
