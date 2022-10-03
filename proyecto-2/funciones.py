@@ -41,7 +41,6 @@ def decimal2BinarioNegative(num):
         else:
             binaryNum[i] = 1
     binaryNum = binaryComplementoA2(binaryNum, binaryComplement)
-    
 
     return binaryNum
 
@@ -148,7 +147,7 @@ def detectOverflow(nums):
 
 # Comparar si un número es más grande que otro e indicar cual es más grande
 # e.g.
-# 101100011 - 101010010 = 101100011
+# 101100011 ? 101010010 = 101100011
 def mayorMenor(arr1, arr2):
     arr = binarySubstration(arr1, arr2)
     if arr[0] == 1:
@@ -165,7 +164,9 @@ def isEqual(arr1, arr2):
     arr = binarySubstration(arr1, arr2)
     for i in range(len(arr)):
         if arr[i] != 0:
+            print("Iguales: ")
             return False
+    print("Iguales: " )
     return True
 
 # Función para invertir el número dado
