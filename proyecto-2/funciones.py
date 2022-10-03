@@ -3,6 +3,9 @@
 # Función para invertir un array
 # e.g.
 # [0,1,1,0,1,0] -> [0,1,0,1,1,0]
+from msilib.schema import Error
+
+
 def reverse(nums):
     i = 0
     j = len(nums)-1
@@ -181,3 +184,5 @@ def complement1(nums):
             nums[i] = 1
         i += 1
     return nums
+
+# print(decimal2BinarioNegative(32767))
