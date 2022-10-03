@@ -18,7 +18,7 @@ def reverse(nums):
 def decimal2BinarioPositive(num):
     num = abs(num)
     binaryNum = []
-    pot = 16
+    pot = 15
     while pot >= 0:
         if num >= 2**pot:
             binaryNum.append(1)
@@ -32,6 +32,7 @@ def decimal2BinarioPositive(num):
 # e.g.
 # -355 -> 010011101
 def decimal2BinarioNegative(num):
+    binaryComplement = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
     binaryNum = decimal2BinarioPositive(num)
     i = 0
     for i in range(len(binaryNum)):
@@ -39,8 +40,37 @@ def decimal2BinarioNegative(num):
             binaryNum[i] = 0
         else:
             binaryNum[i] = 1
-    binaryNum[-1] = 1
+    binaryNum = binaryComplementoA2(binaryNum, binaryComplement)
+    
+
     return binaryNum
+
+# Función para sumar el último bit en complemento a 2
+def binaryComplementoA2(arr1, arr2):
+    newNumber = []
+    carry = 0
+    i = len(arr1)-1
+    while i >= 0:
+        if arr1[i] == 0 and arr2[i] == 0:
+            newNumber.append(0 + carry)
+            carry = 0
+        elif arr1[i] == 1 and arr2[i] == 1:
+            if carry == 1:
+                newNumber.append(1)
+            else:
+                newNumber.append(0)
+                carry = 1
+        else:
+            if carry == 1:
+                newNumber.append(0)
+            else:
+                newNumber.append(1)
+                carry = 0
+        i -= 1
+    if carry == 1:
+        newNumber.append(1)
+    reverse(newNumber)
+    return newNumber
 
 # Función para sumar dos números binarios
 # e.g.
@@ -69,6 +99,7 @@ def binaryAddition(arr1, arr2):
     if carry == 1:
         newNumber.append(1)
     
+    print("Tiene overflow: "+ str(detectOverflow(newNumber)))
     reverse(newNumber)
     return newNumber
 
@@ -104,7 +135,7 @@ def binarySubstration(arr1, arr2):
             else:
                 newNumber.append(1)
         i -= 1
-    
+    print("Tiene overflow: "+ str(detectOverflow(newNumber)))
     reverse(newNumber)
     return newNumber
 
@@ -149,4 +180,3 @@ def complement1(nums):
             nums[i] = 1
         i += 1
     return nums
-
