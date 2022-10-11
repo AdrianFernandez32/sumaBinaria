@@ -101,7 +101,7 @@ def binaryAddition(arr1, arr2):
     if carry == 1:
         newNumber.append(1)
     
-    print("Tiene overflow: "+ str(detectOverflow(newNumber)))
+    # print("Tiene overflow: "+ str(detectOverflow(newNumber)))
     reverse(newNumber)
     return newNumber
 
@@ -137,7 +137,7 @@ def binarySubstration(arr1, arr2):
             else:
                 newNumber.append(1)
         i -= 1
-    print("Tiene overflow: "+ str(detectOverflow(newNumber)))
+    # print("Tiene overflow: "+ str(detectOverflow(newNumber)))
     reverse(newNumber)
     return newNumber
 
@@ -185,4 +185,4 @@ def complement1(nums):
         i += 1
     return nums
 
-# print(decimal2BinarioNegative(32767))
+# Función para detectar overflow en suma (Remastered 2022)
