@@ -141,12 +141,12 @@ def binarySubstration(arr1, arr2):
     reverse(newNumber)
     return newNumber
 
-# Función para detectar overflow (Si es mas largo que 16 bits, se detecta el overflow)
-def detectOverflow(nums):
-    if len(nums) > 16:
-        return True
-    else:
-        return False
+# Función para detectar overflow (Si es mas largo que 16 bits, se detecta el overflow) UPDATE: Es inútil, pero la dejé comentada por si quería verlo
+# def detectOverflow(nums):
+    # if len(nums) > 16:
+        # return True
+    # else:
+        # return False
 
 # Comparar si un número es más grande que otro e indicar cual es más grande
 # e.g.
@@ -185,4 +185,68 @@ def complement1(nums):
         i += 1
     return nums
 
-# Función para detectar overflow en suma (Remastered 2022)
+# Función para detectar overflow en suma (Remastered 10/10/2022)
+def detectOverflowInSuma(num1, num2, binarySum):
+    if len(binarySum) > 16:
+        print("Sobrepasa los 16 bits")
+        return True
+    if num2 >= 0 and num1 >= 0:
+        if binarySum[-16] == 1:
+            return True
+        else:
+            return False
+    elif num2 < 0 and num1 < 0:
+        if binarySum[-16] == 0:
+            return True
+        else:
+            return False
+    elif num2 >= 0 and num1 < 0:
+        if abs(num2) > abs(num1):
+            if binarySum[-16] == 1:
+                return True
+            else:
+                return False
+        else:
+            if binarySum[-16] == 0:
+                return True
+            else:
+                return False
+    elif num1 >= 0 and num2 < 0:
+        if abs(num1) > abs(num2):
+            if binarySum[-16] == 1:
+                return True
+            else:
+                return False
+        else:
+            if binarySum[-16] == 0:
+                return True
+            else:
+                return False
+
+# Función para detectar overflow en resta (Remastered 10/10/2022)
+def detectOverflowInResta(num1, num2, binarySum):
+    if len(binarySum) > 16:
+        print("Sobrepasa los 16 bits")
+        return True
+    if num1 >= 0 and num2 < 0:
+        if abs(num1) > abs(num2):
+            if binarySum[-16] == 1:
+                return True
+            else:
+                return False
+        else:
+            if binarySum[-16] == 0:
+                return True
+            else:
+                return False
+    elif num2 >= 0 and num1 < 0:
+        if abs(num2) > abs(num1):
+            if binarySum[-16] == 0:
+                return True
+            else:
+                return False
+        else:
+            if binarySum[-16] == 0:
+                return True
+            else:
+                return False
